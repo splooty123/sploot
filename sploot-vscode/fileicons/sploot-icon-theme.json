@@ -1,0 +1,18 @@
+{
+  "iconDefinitions": {
+    "sploot-file": {
+      "iconPath": "./icons/sploot-file.svg"
+    },
+    "sploot-language": {
+      "iconPath": "./icons/sploot-language.svg"
+    }
+  },
+
+  "fileExtensions": {
+    "sploot": "sploot-file"
+  },
+
+  "languageIds": {
+    "sploot": "sploot-language"
+  }
+}

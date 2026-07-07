@@ -1,0 +1,72 @@
+~code(
+    ~macro(line)(Ax)(Ay)(Bx)(By)(
+        ~xset(@Ax)
+        ~yset(@Ay)
+        ~var(LINE_SPLITS)(~expr(((@Ax - @Bx) ** 2 + (@Ay - @By) ** 2) ** 0.5))
+        ~var(LINE_XSTEP)(~expr((@Bx - @Ax) / @LINE_SPLITS))
+        ~var(LINE_YSTEP)(~expr((@By - @Ay) / @LINE_SPLITS))
+        ~repeat(@LINE_SPLITS)(
+            .
+            ~xshift(~expr(0 - ~width(.)))
+            ~xshift(@LINE_XSTEP)
+            ~yshift(@LINE_YSTEP)
+        )
+        .
+        ~free(LINE_SPLITS)
+        ~free(LINE_XSTEP)
+        ~free(LINE_YSTEP)
+    )
+)
+
+~code(
+    ~var(top_Ax)(-0.9833)
+    ~var(top_Ay)(0.8054)
+    ~var(top_Bx)(0.1822)
+    ~var(top_By)(0.9514)
+    ~var(top_Cx)(0.9833)
+    ~var(top_Cy)(0.7391)
+    ~var(top_Dx)(-0.1822)
+    ~var(top_Dy)(0.5931)
+
+    ~var(bot_Ax)(-0.9833)
+    ~var(bot_Ay)(-0.7391)
+    ~var(bot_Bx)(0.1822)
+    ~var(bot_By)(-0.5931)
+    ~var(bot_Cx)(0.9833)
+    ~var(bot_Cy)(-0.8054)
+    ~var(bot_Dx)(-0.1822)
+    ~var(bot_Dy)(-0.9514)
+
+    ~set(top_Ax)(~expr(@top_Ax * 100 + 100))
+    ~set(top_Ay)(~expr(@top_Ay * 100 + 100))
+    ~set(top_Bx)(~expr(@top_Bx * 100 + 100))
+    ~set(top_By)(~expr(@top_By * 100 + 100))
+    ~set(top_Cx)(~expr(@top_Cx * 100 + 100))
+    ~set(top_Cy)(~expr(@top_Cy * 100 + 100))
+    ~set(top_Dx)(~expr(@top_Dx * 100 + 100))
+    ~set(top_Dy)(~expr(@top_Dy * 100 + 100))
+
+    ~set(bot_Ax)(~expr(@bot_Ax * 100 + 100))
+    ~set(bot_Ay)(~expr(@bot_Ay * 100 + 100))
+    ~set(bot_Bx)(~expr(@bot_Bx * 100 + 100))
+    ~set(bot_By)(~expr(@bot_By * 100 + 100))
+    ~set(bot_Cx)(~expr(@bot_Cx * 100 + 100))
+    ~set(bot_Cy)(~expr(@bot_Cy * 100 + 100))
+    ~set(bot_Dx)(~expr(@bot_Dx * 100 + 100))
+    ~set(bot_Dy)(~expr(@bot_Dy * 100 + 100))
+
+    ~line(@top_Ax)(@top_Ay)(@top_Bx)(@top_By)
+    ~line(@top_Bx)(@top_By)(@top_Cx)(@top_Cy)
+    ~line(@top_Cx)(@top_Cy)(@top_Dx)(@top_Dy)
+    ~line(@top_Dx)(@top_Dy)(@top_Ax)(@top_Ay)
+
+    ~line(@bot_Ax)(@bot_Ay)(@bot_Bx)(@bot_By)
+    ~line(@bot_Bx)(@bot_By)(@bot_Cx)(@bot_Cy)
+    ~line(@bot_Cx)(@bot_Cy)(@bot_Dx)(@bot_Dy)
+    ~line(@bot_Dx)(@bot_Dy)(@bot_Ax)(@bot_Ay)
+
+    ~line(@top_Ax)(@top_Ay)(@bot_Ax)(@bot_Ay)
+    ~line(@top_Bx)(@top_By)(@bot_Bx)(@bot_By)
+    ~line(@top_Cx)(@top_Cy)(@bot_Cx)(@bot_Cy)
+    ~line(@top_Dx)(@top_Dy)(@bot_Dx)(@bot_Dy)
+)

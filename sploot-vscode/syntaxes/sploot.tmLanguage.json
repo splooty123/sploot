@@ -1,0 +1,190 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Sploot",
+    "scopeName": "source.sploot",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#var_declare"
+        },
+        {
+            "include": "#var_set"
+        },
+        {
+            "include": "#macros"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#operators"
+        }
+    ],
+
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.sploot",
+                    "match": "//.*$"
+                },
+                {
+                    "name": "comment.block.sploot",
+                    "begin": "/\\*",
+                    "end": "\\*/"
+                }
+            ]
+        },
+
+        "var_declare": {
+            "patterns": [
+                {
+                    "name": "meta.variable.declaration.sploot",
+                    "begin": "(~)(var)(\\()",
+                    "beginCaptures": {
+                        "1": { "name": "punctuation.definition.macro.sploot" },
+                        "2": { "name": "keyword.control.sploot" },
+                        "3": { "name": "punctuation.definition.arguments.begin.sploot" }
+                    },
+                    "end": "\\)",
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.arguments.end.sploot" }
+                    },
+                    "patterns": [
+                        {
+                            "name": "entity.name.function.sploot",
+                            "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+                        },
+                        {
+                            "include": "#macros"
+                        },
+                        {
+                            "include": "#variables"
+                        },
+                        {
+                            "include": "#strings"
+                        },
+                        {
+                            "include": "#numbers"
+                        },
+                        {
+                            "name": "punctuation.separator.arguments.sploot",
+                            "match": "\\)\\("
+                        }
+                    ]
+                }
+            ]
+        },
+
+        "var_set": {
+            "patterns": [
+                {
+                    "name": "meta.variable.assignment.sploot",
+                    "begin": "(~)(set)(\\()",
+                    "beginCaptures": {
+                        "1": { "name": "punctuation.definition.macro.sploot" },
+                        "2": { "name": "keyword.control.sploot" },
+                        "3": { "name": "punctuation.definition.arguments.begin.sploot" }
+                    },
+                    "end": "\\)",
+                    "endCaptures": {
+                        "0": { "name": "punctuation.definition.arguments.end.sploot" }
+                    },
+                    "patterns": [
+                        {
+                            "name": "entity.name.function.sploot",
+                            "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+                        },
+                        {
+                            "include": "#macros"
+                        },
+                        {
+                            "include": "#variables"
+                        },
+                        {
+                            "include": "#strings"
+                        },
+                        {
+                            "include": "#numbers"
+                        },
+                        {
+                            "name": "punctuation.separator.arguments.sploot",
+                            "match": "\\)\\("
+                        }
+                    ]
+                }
+            ]
+        },
+
+        "macros": {
+            "patterns": [
+                {
+                    "name": "keyword.control.sploot",
+                    "match": "~[a-zA-Z_][a-zA-Z0-9_]*"
+                }
+            ]
+        },
+
+        "variables": {
+            "patterns": [
+                {
+                    "name": "variable.other.sploot",
+                    "match": "@[a-zA-Z_][a-zA-Z0-9_]*"
+                }
+            ]
+        },
+
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.sploot",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.sploot",
+                            "match": "\\\\."
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.single.sploot",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.sploot",
+                            "match": "\\\\."
+                        }
+                    ]
+                }
+            ]
+        },
+
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.sploot",
+                    "match": "(?<![a-zA-Z0-9_])-?[0-9]+(\\.[0-9]+)?(?![a-zA-Z0-9_])"
+                }
+            ]
+        },
+
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.sploot",
+                    "match": "\\+|-|\\*\\*|\\*|/|%|&&|\\|\\||!=|>=|<=|=|>|<|\\?"
+                }
+            ]
+        }
+    }
+}

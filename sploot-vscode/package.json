@@ -1,0 +1,36 @@
+{
+  "name": "sploot",
+  "displayName": "Sploot",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Themes"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "sploot",
+        "aliases": ["Sploot"],
+        "extensions": [".sploot"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "sploot",
+        "scopeName": "source.sploot",
+        "path": "./syntaxes/sploot.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "sploot-icons",
+        "label": "Sploot Icons",
+        "path": "./fileicons/sploot-icon-theme.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+~code(
+    ~var(a)(0)
+    ~repeat(100)(
+        @a
+        ~indent
+        ~expr(@a % 3 = 0 ? Fizz : .)
+        ~expr(@a % 5 = 0 ? Buzz : .)
+        ~set(a)(~expr(@a + 1))
+        ~nl
+    )
+)
