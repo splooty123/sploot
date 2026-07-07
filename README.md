@@ -126,7 +126,7 @@ SPLOOT_NATIVE_MACRO(native_fastpow, "fastpow") {
 }
 ```
 
-``~fastpow(2)(10)`` now runs as native code with no interpretation overhead. ``SPLOOT_NATIVE_MACRO`` auto-registers the function before ``main()`` runs; native macro definitions need to live in the same translation unit that ``#include``s ``compile.h`` (see ``sploot.c`` / ``libs.h``), since everything in ``compile.h`` has internal linkage. A native macro is always available regardless of what a script defines, in the same way a builtin is -- a script can't shadow it by writing its own ``~macro`` of the same name.
+``~fastpow(2)(10)`` now runs as native code with no interpretation overhead. ``SPLOOT_NATIVE_MACRO`` auto-registers the function before ``main()`` runs; native macro definitions need to live in the same translation unit that ``#include``s ``compile.h`` (see ``sploot.c`` / ``libs.h``), since everything in ``compile.h`` has internal linkage. A native macro is always available regardless of what a script defines, in the same way a builtin is -- a script can't shadow it by writing its own ``~macro`` of the same name. To add this library to sploot make sure to include it in ``lib`` and run the makefile.
 
 # Compilation
 
